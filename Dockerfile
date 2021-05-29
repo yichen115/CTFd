@@ -2,6 +2,8 @@ FROM python:3.7-slim-buster
 WORKDIR /opt/CTFd
 RUN mkdir -p /opt/CTFd /var/log/CTFd /var/uploads
 
+RUN sed -i "s@http://deb.debian.org@http://mirrors.aliyun.com@g" /etc/apt/sources.list
+
 # hadolint ignore=DL3008
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -15,14 +17,14 @@ RUN apt-get update \
 
 COPY requirements.txt /opt/CTFd/
 
-RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install -r requirements.txt --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 COPY . /opt/CTFd
 
 # hadolint ignore=SC2086
 RUN for d in CTFd/plugins/*; do \
         if [ -f "$d/requirements.txt" ]; then \
-            pip install -r $d/requirements.txt --no-cache-dir; \
+            pip install -r $d/requirements.txt --no-cache-dir -i https://pypi.tuna.tsinghua.edu.cn/simple; \
         fi; \
     done;
 
