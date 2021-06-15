@@ -17,14 +17,14 @@ RUN apt-get update \
 
 COPY requirements.txt /opt/CTFd/
 
-RUN pip install -r requirements.txt --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple
+RUN pip install -r requirements.txt --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com
 
 COPY . /opt/CTFd
 
 # hadolint ignore=SC2086
 RUN for d in CTFd/plugins/*; do \
         if [ -f "$d/requirements.txt" ]; then \
-            pip install -r $d/requirements.txt --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple; \
+            pip install -r $d/requirements.txt --no-cache-dir -i http://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.aliyun.com; \
         fi; \
     done;
 
