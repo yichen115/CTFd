@@ -1,3 +1,3 @@
 [submodule "CTFd/plugins/ctfd-whale"]
 	path = CTFd/plugins/ctfd-whale
-	url = https://github.com/VaalaCat/ctfd-whale
+	url = https://github.com/yichen115/ctfd-whale
