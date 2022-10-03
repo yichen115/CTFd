@@ -687,7 +687,7 @@ class ChallengeAttempt(Resource):
                     bottext = get_config("bottext")
                     challenge = Challenges.query.filter_by(id=challenge_id).first_or_404()
                     botmessage = (bottext)%(user.name, challenge.name)
-                    url = bottext+botmessage
+                    url = boturl+botmessage
                     requests.get(url)
                 ###########################
                 log(
