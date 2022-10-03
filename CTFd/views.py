@@ -236,7 +236,9 @@ def setup():
             )
 
             set_config("setup", True)
-
+            set_config("bot", 0) #这里默认设置为不开启
+            set_config("bottext", None)
+            set_config("boturl", None)
             try:
                 db.session.add(admin)
                 db.session.commit()

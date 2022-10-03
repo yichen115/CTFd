@@ -1,0 +1,41 @@
+<div role="tabpanel" class="tab-pane config-section active" id="bots">
+  <form method="POST" autocomplete="off" class="w-100">
+    <div class="form-group">
+      <label for="bot-url">
+        Bot url<br>
+        <small class="form-text text-muted">
+          地址中带好参数名只留消息内容供平台拼接
+        </small>
+        <small class="form-text text-muted">
+          例如：http://127.0.0.1:5700/send_group_msg?group_id=xxxxxx&message=
+        </small>
+      </label>
+      <input class="form-control" id='bot-url' name='boturl' type='text'>
+    </div>
+    <div class="form-group">
+      <label for="bot-text">
+        Message<br>
+        <small class="form-text text-muted">
+          格式：恭喜%s做出题目%s，默认第一个参数为用户名，第二个参数为题目名称
+        </small>
+      </label>
+      <input class="form-control" id='bot-text' name='bottext' type='text'>
+    </div>
+    <div class="form-group">
+      <label for="botof">
+        是否开启机器人
+      </label>
+      <div>
+        <select class="form-control custom-select" id="botof" name="bot">
+          <option value=0>
+            关闭
+          </option>
+          <option value=1>
+            开启
+          </option>
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-md btn-primary float-right">更新</button>
+  </form>
+</div>

@@ -1,6 +1,6 @@
 import datetime
 from typing import List
-
+import requests
 from flask import abort, render_template, request, url_for
 from flask_restx import Namespace, Resource
 from sqlalchemy import func as sa_func
@@ -680,7 +680,16 @@ class ChallengeAttempt(Resource):
                         user=user, team=team, challenge=challenge, request=request
                     )
                     clear_standings()
-
+                ########### bot ###########
+                bot = get_config("bot")
+                if(bot):
+                    boturl = get_config("boturl")
+                    bottext = get_config("bottext")
+                    challenge = Challenges.query.filter_by(id=challenge_id).first_or_404()
+                    botmessage = (bottext)%(user.name, challenge.name)
+                    url = bottext+botmessage
+                    requests.get(url)
+                ###########################
                 log(
                     "submissions",
                     "[{date}] {name} submitted {submission} on {challenge_id} with kpm {kpm} [CORRECT]",
