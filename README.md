@@ -1,3 +1,5 @@
+### 后台config加上了个机器人接口，使用教程：https://www.yuque.com/hxfqg9/misc/ctfd
+
 # ![](https://github.com/CTFd/CTFd/blob/master/CTFd/themes/core/static/img/logo.png?raw=true)
 
 ![CTFd MySQL CI](https://github.com/CTFd/CTFd/workflows/CTFd%20MySQL%20CI/badge.svg?branch=master)
