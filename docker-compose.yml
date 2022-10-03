@@ -6,7 +6,7 @@ services:
     user: root
     restart: always
     ports:
-      - "9124:8000"
+      - "80:8000"#前面的80是CTFd平台访问的端口
     environment:
       - UPLOAD_FOLDER=/var/uploads
       - DATABASE_URL=mysql+pymysql://ctfd:ctfd@db/ctfd
@@ -19,7 +19,7 @@ services:
     volumes:
       - .data/CTFd/logs:/var/log/CTFd
       - .data/CTFd/uploads:/var/uploads
-      - .:/opt/CTFd:ro
+      - .:/opt/CTFd #这里本来有个:ro,诸多不便去掉了，不知道会有啥影响
       - /var/run/docker.sock:/var/run/docker.sock
     depends_on:
       - db
